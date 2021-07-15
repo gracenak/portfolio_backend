@@ -1,7 +1,8 @@
-class ProjectsController < ApplicationController
+class Api::V1::ProjectsController < ApplicationController
 
     def index
         @projects = Project.all
+        render json: @projects
     end
 
     def show
@@ -10,7 +11,7 @@ class ProjectsController < ApplicationController
 
     private
 
-    def recipe_params
+    def project_params
         params.require(:project).permit(:title, :summary, :description, :link)
     end
 end
